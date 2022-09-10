@@ -7,12 +7,18 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+        child: Scaffold(
       appBar: AppBar(title: const Text('Music Match')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Music symbol
+            // Image.asset(
+            //   'lib/images/music_symbol.png',
+            //   fit: BoxFit.scaleDown,
+            // ),
             // Text Input for email / username
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -41,11 +47,14 @@ class LoginPage extends StatelessWidget {
                     color: Colors.grey[200],
                     border: Border.all(color: Colors.white),
                     borderRadius: BorderRadius.circular(12)),
+                // Padding for the input text
                 child: const Padding(
                   padding: EdgeInsets.only(left: 20.0),
                   child: TextField(
-                      decoration: InputDecoration(
-                          border: InputBorder.none, hintText: 'Password')),
+                    decoration: InputDecoration(
+                        border: InputBorder.none, hintText: 'Password'),
+                    obscureText: true,
+                  ),
                 ),
               ),
             ),
@@ -55,7 +64,9 @@ class LoginPage extends StatelessWidget {
             // HyperLink text for registration
             const Text("Don't have an account? Click here"),
             TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, RegistrationPage.route);
+                },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(kGoldenColor),
                 ),
@@ -63,6 +74,6 @@ class LoginPage extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }
